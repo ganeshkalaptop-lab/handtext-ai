@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandText AI - Professional Handwriting Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>✍️ HandText AI</h1>
+                <p class="subtitle">Transform typed text into realistic handwriting</p>
+                <div class="features-badge">
+                    <span>🎨 Premium Fonts</span>
+                    <span>📄 Multi-page PDF</span>
+                    <span>🆓 100% Free</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-wrapper">
+            <!-- Left Panel - Input & Controls -->
+            <aside class="left-panel">
+                <!-- Input Section -->
+                <section class="input-section">
+                    <div class="section-header">
+                        <h2>📝 Your Text</h2>
+                        <span class="word-count">0 words</span>
+                    </div>
+                    
+                    <textarea 
+                        id="inputText" 
+                        placeholder="Start typing or paste your essay, report, notes, or any text here...
+
+No character limit - write as much as you need!"
+                        spellcheck="false"
+                    ></textarea>
+                    
+                    <div class="input-actions">
+                        <label for="fileUpload" class="btn btn-secondary">
+                            📤 Upload File
+                            <input type="file" id="fileUpload" accept=".txt,.doc,.docx" hidden>
+                        </label>
+                        <button id="clearBtn" class="btn btn-outline">🗑️ Clear</button>
+                        <button id="sampleBtn" class="btn btn-outline">📋 Sample</button>
+                    </div>
+                </section>
+
+                <!-- Controls Section -->
+                <section class="controls-section">
+                    <h3>🎨 Customize Style</h3>
+                    
+                    <!-- Handwriting Style -->
+                    <div class="control-group">
+                        <label>
+                            <span class="icon">✏️</span>
+                            Handwriting Style
+                        </label>
+                        <select id="fontStyle" class="custom-select">
+                            <optgroup label="Casual & Friendly">
+                                <option value="caveat">Casual Script</option>
+                                <option value="indie-flower">Quick Notes</option>
+                                <option value="patrick-hand">Patrick's Hand</option>
+                                <option value="architects-daughter">Architect Style</option>
+                            </optgroup>
+                            <optgroup label="Elegant & Formal">
+                                <option value="dancing-script">Elegant Cursive</option>
+                                <option value="great-vibes">Great Vibes</option>
+                                <option value="parisienne">Parisienne</option>
+                                <option value="allura">Allura</option>
+                            </optgroup>
+                            <optgroup label="Modern & Clean">
+                                <option value="kalam">Neat Print</option>
+                                <option value="shadows">Shadows Light</option>
+                                <option value="gloria">Gloria Style</option>
+                            </optgroup>
+                            <optgroup label="Unique & Bold">
+                                <option value="permanent-marker">Bold Marker</option>
+                                <option value="reenie-beanie">Reenie Beanie</option>
+                                <option value="satisfy">Satisfy</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Ink Color -->
+                    <div class="control-group">
+                        <label>
+                            <span class="icon">🎨</span>
+                            Ink Color
+                        </label>
+                        <div class="color-options">
+                            <select id="inkColor" class="custom-select">
+                                <option value="#0a4fb8">Classic Blue</option>
+                                <option value="#000000">Jet Black</option>
+                                <option value="#1a237e">Navy Blue</option>
+                                <option value="#c62828">Red Ink</option>
+                                <option value="#2e7d32">Forest Green</option>
+                                <option value="#6a1b9a">Purple</option>
+                                <option value="custom">Custom Color</option>
+                            </select>
+                            <input type="color" id="customColor" value="#0a4fb8" class="color-picker" style="display: none;">
+                        </div>
+                    </div>
+
+                    <!-- Paper Style -->
+                    <div class="control-group">
+                        <label>
+                            <span class="icon">📄</span>
+                            Paper Style
+                        </label>
+                        <select id="paperStyle" class="custom-select">
+                            <option value="lined">Lined Notebook</option>
+                            <option value="plain">Plain White</option>
+                            <option value="college">College Ruled</option>
+                            <option value="grid">Grid Paper</option>
+                            <option value="dotted">Dotted Journal</option>
+                        </select>
+                    </div>
+
+                    <!-- Page Layout -->
+                    <div class="control-group">
+                        <label>
+                            <span class="icon">📑</span>
+                            Page Layout
+                        </label>
+                        <select id="pageLayout" class="custom-select">
+                            <option value="single">Single Long Page</option>
+                            <option value="multiple">Multiple Pages (A4)</option>
+                        </select>
+                    </div>
+
+                    <!-- Text Size -->
+                    <div class="control-group">
+                        <label>
+                            <span class="icon">🔤</span>
+                            Text Size: <strong><span id="fontSizeValue">18</span>px</strong>
+                        </label>
+                        <input type="range" id="fontSize" min="14" max="32" value="18" class="custom-range">
+                        <div class="range-labels">
+                            <span>Small</span>
+                            <span>Large</span>
+                        </div>
+                    </div>
+
+                    <!-- Line Spacing -->
+                    <div class="control-group">
+                        <label>
+                            <span class="icon">📏</span>
+                            Line Spacing: <strong><span id="lineHeightValue">2.0</span></strong>
+                        </label>
+                        <input type="range" id="lineHeight" min="1.5" max="3.0" step="0.1" value="2.0" class="custom-range">
+                        <div class="range-labels">
+                            <span>Tight</span>
+                            <span>Loose</span>
+                        </div>
+                    </div>
+
+                    <!-- Page Margins -->
+                    <div class="control-group">
+                        <label>
+                            <span class="icon">↔️</span>
+                            Page Margins: <strong><span id="marginValue">50</span>px</strong>
+                        </label>
+                        <input type="range" id="pageMargin" min="20" max="100" value="50" class="custom-range">
+                        <div class="range-labels">
+                            <span>Narrow</span>
+                            <span>Wide</span>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Options -->
+                    <div class="advanced-options">
+                        <h4>⚙️ Advanced Options</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="letterVariation" checked>
+                            <span>Letter Variation (More Realistic)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showPageNumbers" checked>
+                            <span>Show Page Numbers</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="showDate" checked>
+                            <span>Show Date on Page</span>
+                        </label>
+                    </div>
+
+                    <button id="generateBtn" class="btn btn-primary btn-large">
+                        ✨ Generate Handwriting
+                    </button>
+                </section>
+            </aside>
+
+            <!-- Right Panel - Preview & Download -->
+            <main class="right-panel">
+                <section class="preview-section">
+                    <div class="section-header">
+                        <h2>👀 Live Preview</h2>
+                        <div class="preview-actions">
+                            <button id="zoomOut" class="btn-icon" title="Zoom Out">🔍-</button>
+                            <span id="zoomLevel">100%</span>
+                            <button id="zoomIn" class="btn-icon" title="Zoom In">🔍+</button>
+                        </div>
+                    </div>
+
+                    <div class="preview-container" id="previewContainer">
+                        <div class="preview-placeholder">
+                            <div class="placeholder-icon">✍️</div>
+                            <h3>Your handwritten text will appear here</h3>
+                            <p>Enter text and click "Generate Handwriting" to see the preview</p>
+                        </div>
+                        
+                        <div id="pagesContainer" class="pages-container" style="display: none;">
+                            <!-- Pages will be dynamically added here -->
+                        </div>
+                    </div>
+
+                    <div class="download-section" id="downloadSection" style="display: none;">
+                        <h3>💾 Download Your Handwriting</h3>
+                        <div class="download-buttons">
+                            <button id="downloadPng" class="btn btn-success">
+                                <span class="btn-icon">🖼️</span>
+                                Download as PNG
+                            </button>
+                            <button id="downloadPdf" class="btn btn-success">
+                                <span class="btn-icon">📑</span>
+                                Download as PDF
+                            </button>
+                        </div>
+                        <p class="download-note">
+                            💡 <strong>Tip:</strong> PDF format is better for printing and preserves quality
+                        </p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with ❤️ • 100% Free • No Sign-up • No Watermarks • Unlimited Use</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Generating your handwriting...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
