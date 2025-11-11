@@ -790,7 +790,7 @@ body.dark-mode .preview-area {
     border-radius: 10px;
 }
 
-/* Responsive */
+/* Responsive - MOBILE OPTIMIZED */
 @media (max-width: 1024px) {
     .container {
         grid-template-columns: 1fr;
@@ -800,11 +800,20 @@ body.dark-mode .preview-area {
         position: static;
     }
     
+    /* MOBILE: Smaller page size that fits screen */
     .page {
         width: 100%;
         height: auto;
-        min-height: 297mm;
+        min-height: auto;
+        max-width: 100%;
         aspect-ratio: 210 / 297;
+    }
+    
+    /* Scale down page content on mobile */
+    .pages-container {
+        transform: scale(0.85);
+        transform-origin: top center;
+        margin-top: -2rem;
     }
     
     .logo {
@@ -817,6 +826,30 @@ body.dark-mode .preview-area {
     
     .logo-tagline {
         font-size: 0.65rem;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+    .page {
+        width: 95%;
+        margin: 0 auto;
+    }
+    
+    /* Even smaller scale for tiny screens */
+    .pages-container {
+        transform: scale(0.7);
+        margin-top: -3rem;
+    }
+    
+    .preview-area {
+        padding: 1rem;
+        min-height: 400px;
+    }
+    
+    .page-content {
+        padding: 20px;
+        font-size: 16px;
     }
 }
 
