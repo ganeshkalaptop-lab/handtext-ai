@@ -42,41 +42,80 @@ body {
     transition: background 0.3s, color 0.3s;
 }
 
-/* Header */
+/* ========== UPDATED HEADER DESIGN ========== */
 .header {
-    background: var(--card-bg);
-    padding: 1rem 2rem;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+.logo-tagline {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
 }
 
 .theme-btn {
-    background: var(--bg-color);
-    border: 2px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .theme-btn:hover {
-    transform: scale(1.1);
-    border-color: var(--primary-color);
+    transform: scale(1.15) rotate(15deg);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Container */
@@ -320,10 +359,10 @@ body {
     transform: scale(1.2);
 }
 
-/* Color Picker - WITH HOVER ANIMATION */
+/* ========== UPDATED: 12 INK COLORS (4 columns x 3 rows) ========== */
 .color-picker {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
 }
 
@@ -365,7 +404,53 @@ body {
     transform: scale(1.1);
 }
 
-/* ========== NEW: INTERACTIVE PAPER SELECTOR ========== */
+/* ========== NEW: 12 BACKGROUND COLORS (4 columns x 3 rows) ========== */
+.bg-color-picker {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.bg-color-box {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 3px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.bg-color-box .checkmark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 18px;
+    font-weight: bold;
+    color: #2563eb;
+    transition: transform 0.3s ease;
+    text-shadow: 0 0 2px white, 0 0 4px white;
+}
+
+.bg-color-box:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.bg-color-box.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.bg-color-box.active .checkmark {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* ========== INTERACTIVE PAPER SELECTOR ========== */
 .paper-selector {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -508,10 +593,10 @@ body.dark-mode .preview-area {
     align-items: center;
 }
 
-/* ========== UPDATED: Page with PROPER TEXT ALIGNMENT ========== */
+/* ========== PAGE DIMENSIONS ========== */
 .page {
     width: 210mm;
-    min-height: 297mm;
+    height: 297mm;
     background: white;
     box-shadow: var(--shadow-lg);
     border-radius: 4px;
@@ -531,7 +616,7 @@ body.dark-mode .preview-area {
     z-index: 1;
 }
 
-/* ========== FIXED: Text content with proper line alignment ========== */
+/* Text content with proper line alignment */
 .page-content {
     position: relative;
     z-index: 2;
@@ -540,8 +625,8 @@ body.dark-mode .preview-area {
     white-space: pre-wrap;
     font-size: 20px;
     color: #000000;
-    line-height: 30px; /* This matches the ruled line spacing */
-    padding-top: 50px; /* Aligns first line with first rule */
+    line-height: 30px;
+    padding-top: 50px;
 }
 
 /* Page number */
@@ -717,7 +802,21 @@ body.dark-mode .preview-area {
     
     .page {
         width: 100%;
-        max-width: 210mm;
+        height: auto;
+        min-height: 297mm;
+        aspect-ratio: 210 / 297;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+        font-size: 2rem;
+    }
+    
+    .logo-tagline {
+        font-size: 0.65rem;
     }
 }
 

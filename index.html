@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TextToHand - AI Handwriting Generator</title>
     
-    <!-- Make sure this file exists and is named exactly: styles.css -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
-    <!-- Header -->
+    <!-- UPDATED Header with New Design -->
     <header class="header">
-        <h1 class="logo">✍️ Realhand ai</h1>
-        <button id="themeBtn" class="theme-btn">🌙</button>
+        <div class="header-content">
+            <div class="logo-section">
+                <span class="logo-icon">✍️</span>
+                <h1 class="logo">TextToHand</h1>
+                <span class="logo-tagline">AI Handwriting</span>
+            </div>
+            <button id="themeBtn" class="theme-btn">🌙</button>
+        </div>
     </header>
 
     <!-- Main Container -->
@@ -68,9 +73,9 @@
                     <input type="range" id="lineSpacing" min="1.2" max="3.0" step="0.1" value="1.8" class="slider">
                 </div>
 
-                <!-- Text Color -->
+                <!-- UPDATED: 12 Ink Colors (Professional + Pastels) -->
                 <div class="control-group">
-                    <label>Ink Color:</label>
+                    <label>🖊️ Ink Color:</label>
                     <div class="color-picker">
                         <button class="color-box active" data-color="#000000" style="background: #000000;" title="Black"></button>
                         <button class="color-box" data-color="#0047AB" style="background: #0047AB;" title="Blue"></button>
@@ -78,10 +83,65 @@
                         <button class="color-box" data-color="#228B22" style="background: #228B22;" title="Green"></button>
                         <button class="color-box" data-color="#8B4513" style="background: #8B4513;" title="Brown"></button>
                         <button class="color-box" data-color="#4B0082" style="background: #4B0082;" title="Purple"></button>
+                        <button class="color-box" data-color="#FF6B9D" style="background: #FF6B9D;" title="Pink"></button>
+                        <button class="color-box" data-color="#FF8C00" style="background: #FF8C00;" title="Orange"></button>
+                        <button class="color-box" data-color="#20B2AA" style="background: #20B2AA;" title="Teal"></button>
+                        <button class="color-box" data-color="#6A5ACD" style="background: #6A5ACD;" title="Slate Blue"></button>
+                        <button class="color-box" data-color="#2F4F4F" style="background: #2F4F4F;" title="Dark Gray"></button>
+                        <button class="color-box" data-color="#8B0000" style="background: #8B0000;" title="Dark Red"></button>
                     </div>
                 </div>
 
-                <!-- UPDATED: Interactive Paper Type Selector -->
+               <!-- UPDATED: Better Visible Paper Backgrounds -->
+<div class="control-group">
+    <label>📄 Paper Background:</label>
+    <div class="bg-color-picker">
+        <!-- Pure White -->
+        <button class="bg-color-box active" data-bg="#FFFFFF" style="background: #FFFFFF;" title="Pure White">
+            <span class="checkmark">✓</span>
+        </button>
+        
+        <!-- 4 LIGHT BUT VISIBLE (You can see the difference from white!) -->
+        <button class="bg-color-box" data-bg="#FFF9E6" style="background: #FFF9E6;" title="Light Cream">
+            <span class="checkmark">✓</span>
+        </button>
+        <button class="bg-color-box" data-bg="#E3F2FD" style="background: #E3F2FD;" title="Light Blue">
+            <span class="checkmark">✓</span>
+        </button>
+        <button class="bg-color-box" data-bg="#FCE4EC" style="background: #FCE4EC;" title="Light Pink">
+            <span class="checkmark">✓</span>
+        </button>
+        <button class="bg-color-box" data-bg="#E8F5E9" style="background: #E8F5E9;" title="Light Green">
+            <span class="checkmark">✓</span>
+        </button>
+        
+        <!-- 4 MEDIUM (Clearly visible, good contrast) -->
+        <button class="bg-color-box" data-bg="#FFE082" style="background: #FFE082;" title="Soft Yellow">
+            <span class="checkmark">✓</span>
+        </button>
+        <button class="bg-color-box" data-bg="#B3E5FC" style="background: #B3E5FC;" title="Sky Blue">
+            <span class="checkmark">✓</span>
+        </button>
+        <button class="bg-color-box" data-bg="#FFCCBC" style="background: #FFCCBC;" title="Peach">
+            <span class="checkmark">✓</span>
+        </button>
+        <button class="bg-color-box" data-bg="#D1C4E9" style="background: #D1C4E9;" title="Lavender">
+            <span class="checkmark">✓</span>
+        </button>
+        
+        <!-- 3 MORE VISIBLE (Darker but text still clear) -->
+        <button class="bg-color-box" data-bg="#A5D6A7" style="background: #A5D6A7;" title="Mint Green">
+            <span class="checkmark">✓</span>
+        </button>
+        <button class="bg-color-box" data-bg="#FFAB91" style="background: #FFAB91;" title="Coral">
+            <span class="checkmark">✓</span>
+        </button>
+        <button class="bg-color-box" data-bg="#80DEEA" style="background: #80DEEA;" title="Cyan">
+            <span class="checkmark">✓</span>
+        </button>
+    </div>
+</div>
+                <!-- Interactive Paper Type Selector -->
                 <div class="control-group">
                     <label>📓 Notebook Paper Style:</label>
                     <div class="paper-selector" id="paperSelector">
@@ -137,11 +197,10 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
-    <!-- External Libraries - These load from CDN -->
+    <!-- External Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
-    <!-- Your JavaScript - Make sure this file exists and is named exactly: script.js -->
     <script src="script.js"></script>
 
 </body>
